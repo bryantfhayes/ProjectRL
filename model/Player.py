@@ -4,6 +4,8 @@
 # @Last Modified by:   Bryant Hayes
 # @Last Modified time: 2017-11-06 14:04:05
 
+from model.Entity import Entity
+
 class Player(Entity):
-	def __init__(self, initialX, initialY):
-		Entity.__init__(self, initialX, initialY)
+	def __init__(self, initialX, initialY, char):
+		Entity.__init__(self, initialX, initialY, char)

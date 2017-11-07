@@ -5,9 +5,19 @@
 # @Last Modified time: 2017-11-06 14:05:21
 
 class System():
-	def __init__(self):
-		pass
+	def __init__(self, msgBus):
+		self.subscriptions = []
+		self.initialized = False
+		self.msgBus = msgBus
+
+	# VIRTUAL
+	def init(self):
+		self.initialized = True
 
 	# VIRTUAL
 	def handleMessage(self, msg):
+		pass
+
+	# VIRTUAL
+	def update(self):
 		pass

@@ -5,6 +5,7 @@
 # @Last Modified time: 2017-11-06 14:03:41
 
 class Entity():
-	def __init__(self, initialX, initialY):
-		self.initialX = initialX
-		self.initialY = initialY
+	def __init__(self, initialX, initialY, char):
+		self.x = initialX
+		self.y = initialY
+		self.char = char

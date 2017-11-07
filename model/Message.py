@@ -8,6 +8,13 @@ import time
 class MsgType():
 	eMsgType_None = 0
 	eMsgType_Debug = 1
+	eMsgType_AddEntity = 2
+	eMsgType_RemoveEntity = 3
+	eMsgType_KeyPressed = 4
+	eMsgType_CameraFollowEntity = 5
+	eMsgType_MoveEntity = 6
+	eMsgType_KeyReleased = 7
+	eMsgType_Quit = 8
 
 class Message():
 	def __init__(self, sender, target, msgType, data=None, targetTime=None):

@@ -6,14 +6,15 @@
 from model.Message import Message, MsgType
 from controller.System import System
 
-class Console(System):
+class Audio(System):
 	def __init__(self, msgBus):
 		System.__init__(self, msgBus)
-		self.subscriptions = [MsgType.eMsgType_Debug]
+
+	def init(self):
+		System.init(self)
 
 	def handleMessage(self, msg):
-		if msg.data:
-			print("[{0} - {1}] {2}".format(msg.createTime, msg.targetTime, msg.data))
+		pass
 
 	def update(self):
 		pass

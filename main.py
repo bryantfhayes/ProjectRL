@@ -4,11 +4,12 @@
 # @Last Modified by:   Bryant Hayes
 # @Last Modified time: 2017-11-06 15:06:13
 import tdl
-from controller.Engine import Engine
+from MyGameEngine import MyGameEngine
 
 def main():
 	print("Launching ProjectRL...")
-	engine = Engine()
+	engine = MyGameEngine()
+	engine.init(50, 30)
 	engine.run()
 
 if __name__ == "__main__":
