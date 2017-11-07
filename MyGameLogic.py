@@ -2,11 +2,12 @@
 # @Author: Bryant Hayes
 # @Date:   2017-11-06 15:01:39
 # @Last Modified by:   Bryant Hayes
-# @Last Modified time: 2017-11-06 15:24:02
+# @Last Modified time: 2017-11-07 11:55:56
 from model.Message import Message, MsgType
 from controller.Logic import Logic
 from model.Player import Player
 from model.Entity import Entity
+from controller.AI import AIType
 
 import random
 
@@ -41,7 +42,7 @@ class MyGameLogic(Logic):
 		Logic.init(self)
 
 		# Init state of the game...
-		self.player = Player(50, 50, "@")
+		self.player = Player(50, 50, "@", self.msgBus, aiType=AIType.AIType_Zombie)
 		self.addEntity(self.player)
 
 		# Force camera to follow player entity
@@ -65,7 +66,7 @@ class MyGameLogic(Logic):
 		if self.shiftModifier:
 			self.removeEntityAt(entity.x + vector2D[0], entity.y + vector2D[1])
 		else:
-			self.addEntity(Entity(entity.x + vector2D[0], entity.y + vector2D[1], "#"))
+			self.addEntity(Entity(entity.x + vector2D[0], entity.y + vector2D[1], "#", self.msgBus))
 
 	def keyReleased(self, key):
 		if key.upper() == "SHIFT":
@@ -109,7 +110,7 @@ class MyGameLogic(Logic):
 
 				# If random chance, or edge piece, add wall
 				if (random.uniform(0, 1) < chance) or (x == 0 or y == 0 or x == width-1 or y == height-1):
-					wall = Entity(x, y, "#")
+					wall = Entity(x, y, "#", self.msgBus)
 					self.addEntity(wall)
 					arr[x][y] = wall.char
 

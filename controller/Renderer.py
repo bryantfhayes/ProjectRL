@@ -2,7 +2,7 @@
 # @Author: Bryant Hayes
 # @Date:   2017-11-06 15:01:39
 # @Last Modified by:   Bryant Hayes
-# @Last Modified time: 2017-11-06 15:24:02
+# @Last Modified time: 2017-11-07 13:07:19
 from model.Message import Message, MsgType
 from controller.System import System
 
@@ -59,7 +59,10 @@ class Renderer(System):
 			if entity.x + self.offsetX >= self.width or entity.y + self.offsetY >= self.height or entity.x + self.offsetX < 0 or entity.y + self.offsetY < 0:
 				pass
 			else:
-				self.window.drawChar(entity.x + self.offsetX, entity.y + self.offsetY, entity.char)
+				if self.following == None:
+					self.window.drawChar(entity.x + self.offsetX, entity.y + self.offsetY, entity.char)
+				elif abs(self.following.x - entity.x) <= self.following.sightRange and abs(self.following.y - entity.y) <= self.following.sightRange:
+					self.window.drawChar(entity.x + self.offsetX, entity.y + self.offsetY, entity.char)
 
 		# Write window to screen
 		tdl.flush()

@@ -2,7 +2,7 @@
 # @Author: Bryant Hayes
 # @Date:   2017-11-06 13:22:32
 # @Last Modified by:   Bryant Hayes
-# @Last Modified time: 2017-11-06 15:25:09
+# @Last Modified time: 2017-11-07 09:58:06
 import time
 
 class MsgType():
@@ -15,6 +15,7 @@ class MsgType():
 	eMsgType_MoveEntity = 6
 	eMsgType_KeyReleased = 7
 	eMsgType_Quit = 8
+	eMsgType_SubscribeAI = 9
 
 class Message():
 	def __init__(self, sender, target, msgType, data=None, targetTime=None):
