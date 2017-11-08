@@ -10,6 +10,9 @@ from controller import Utilities
 
 from MyGameAI import MyGameAI
 from MyGameLogic import MyGameLogic
+from NetworkInput import NetworkInput
+from controller.Input import Input
+from NetworkRenderer import NetworkRenderer
 
 class MyGameEngine(Engine):
 	def __init__(self):
@@ -26,5 +29,17 @@ class MyGameEngine(Engine):
 		self.ai = MyGameAI(self.msgBus)
 		self.ai.init()
 		self.systems.append(self.ai)
+
+		self.remote_renderer = NetworkRenderer(self.msgBus, "127.0.0.1", 5006)
+		self.remote_renderer.init(windowWidth, windowHeight)
+		self.systems.append(self.remote_renderer)
+
+		self.remote_input = NetworkInput(self.msgBus, "127.0.0.1", 5005)
+		self.remote_input.init()
+		self.systems.append(self.remote_input)
+
+		self.input = Input(self.msgBus)
+		self.input.init()
+		self.systems.append(self.input)
 
 		Engine.init(self, windowWidth, windowHeight)
