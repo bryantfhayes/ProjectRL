@@ -45,14 +45,12 @@ class AI(System):
 		surroundingEntities = []
 		for entity in self.entities:
 			if abs(agent.x - entity.x) <= agent.sightRange and abs(agent.y - entity.y) <= agent.sightRange:
-				surroundingEntities.append(entity)
+				if entity != agent:
+					surroundingEntities.append(entity)
 		return surroundingEntities
 
 	def updateAgent(self, agent):
-		if agent.aiType == AIType.AIType_Zombie:
-			print(self.lookAround(agent))
-			vector2D = agent.moves[random.randint(0, len(agent.moves)-1)]
-			self.move(agent, vector2D)
+		pass
 
 	def update(self):
 		for agent in self.agents:

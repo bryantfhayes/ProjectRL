@@ -42,7 +42,7 @@ class MyGameLogic(Logic):
 		Logic.init(self)
 
 		# Init state of the game...
-		self.player = Player(50, 50, "@", self.msgBus, aiType=AIType.AIType_Zombie)
+		self.player = Player(50, 50, "@", self.msgBus)#, aiType=AIType.AIType_Zombie)
 		self.addEntity(self.player)
 
 		# Force camera to follow player entity

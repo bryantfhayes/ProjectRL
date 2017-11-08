@@ -8,6 +8,7 @@ from controller.Engine import Engine
 from model.Message import Message, MsgType
 from controller import Utilities
 
+from MyGameAI import MyGameAI
 from MyGameLogic import MyGameLogic
 
 class MyGameEngine(Engine):
@@ -15,8 +16,15 @@ class MyGameEngine(Engine):
 		Engine.__init__(self)
 	
 	def init(self, windowWidth, windowHeight):
-		Engine.init(self, windowWidth, windowHeight)
 
+		# Custom Game Logic System
 		self.logic = MyGameLogic(self.msgBus)
 		self.logic.init()
 		self.systems.append(self.logic)
+
+		# Custom Game Logic System
+		self.ai = MyGameAI(self.msgBus)
+		self.ai.init()
+		self.systems.append(self.ai)
+
+		Engine.init(self, windowWidth, windowHeight)
