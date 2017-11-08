@@ -2,7 +2,7 @@
 # @Author: Bryant Hayes
 # @Date:   2017-11-06 15:01:39
 # @Last Modified by:   Bryant Hayes
-# @Last Modified time: 2017-11-07 11:57:10
+# @Last Modified time: 2017-11-07 16:57:35
 from model.Message import Message, MsgType
 from controller.System import System
 
@@ -51,8 +51,8 @@ class AI(System):
 	def updateAgent(self, agent):
 		if agent.aiType == AIType.AIType_Zombie:
 			print(self.lookAround(agent))
-			#vector2D = entity.moves[random.randint(0, len(entity.moves)-1)]
-			#self.move(entity, vector2D)
+			vector2D = agent.moves[random.randint(0, len(agent.moves)-1)]
+			self.move(agent, vector2D)
 
 	def update(self):
 		for agent in self.agents:
